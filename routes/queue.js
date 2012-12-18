@@ -2,7 +2,17 @@
  * Queue resource.
  */
 
-exports.list = function(req, res)
+var queues =
+[
+	{
+		name: "Logistics"
+	},
+	{
+		name: "Pricing Management"
+	}
+];
+
+exports.list = function(request, response)
 {
-	res.send("respond with a resource");
+	response.send(queues);
 };
