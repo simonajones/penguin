@@ -3,9 +3,11 @@
 var queues =
 [
 	{
+		id: 1,
 		name: "Logistics"
 	},
 	{
+		id: 2,
 		name: "Pricing Management"
 	}
 ];
