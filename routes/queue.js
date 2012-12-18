@@ -1,6 +1,4 @@
-/*
- * Queue resource.
- */
+// Queue Resource
 
 var queues =
 [
