@@ -1,5 +1,5 @@
 /*
- * GET users listing.
+ * Queue resource.
  */
 
 exports.list = function(req, res)

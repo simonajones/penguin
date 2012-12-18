@@ -3,7 +3,7 @@
  */
 
 var express = require("express"),
-	user = require("./routes/user"),
+	queue = require("./routes/queue"),
 	http = require("http"),
 	path = require("path");
 
@@ -25,7 +25,7 @@ app.configure("development", function()
 	app.use(express.errorHandler());
 });
 
-app.get("/users", user.list);
+app.get("/queues", queue.list);
 
 http.createServer(app).listen(app.get("port"), function()
 {
