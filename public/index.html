@@ -4,9 +4,15 @@
 	<head>
 		<title>Penguin</title>
 		<link rel="stylesheet" href="/stylesheets/style.css"/>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+		<script src="/javascripts/underscore-min.js"></script>
+		<script src="/javascripts/backbone-min.js"></script>
+		<script src="/javascripts/queue.js"></script>
+		<script id="queueTemplate" type="text/template"><%= name %></script>
 	</head>
 	<body>
 		<h1>Penguin</h1>
-		<p>Welcome to the virtual penguin queue!</p>
+		<p>The following queues are available:</p>
+		<ul id="queues"></ul>
 	</body>
 </html>
