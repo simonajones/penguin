@@ -4,6 +4,8 @@ $(function() {
 	
 	var Queue = Backbone.Model.extend({
 		
+		urlRoot: "/api/queue"
+		
 	});
 	
 	var Queues = Backbone.Collection.extend({
@@ -11,6 +13,24 @@ $(function() {
 		url: "/api/queues",
 		
 		model: Queue
+		
+	});
+	
+	var QueueView = Backbone.View.extend({
+		
+		model: new Queue(),
+		
+		template: _.template($("#queueTemplate").html()),
+		
+		initialize: function() {
+			this.model.bind("change", this.render, this);
+			this.model.fetch();
+		},
+		
+		render: function() {
+			this.$el.html(this.template(this.model.toJSON()));
+			return this;
+		}
 		
 	});
 	
@@ -63,7 +83,8 @@ $(function() {
 		},
 		
 		queue: function(id) {
-			$("#content").html("Queue #" + id);
+			var queueView = new QueueView({model: new Queue({id: id})});
+			$("#content").html(queueView.render().el);
 		}
 		
 	});
