@@ -2,18 +2,32 @@
 
 <html>
 	<head>
+	
 		<title>Penguin</title>
+		
 		<link rel="stylesheet" href="/stylesheets/style.css"/>
+		
+		<!-- jQuery -->
+		
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+		
+		<!-- backbone.js -->
+		
 		<script src="/javascripts/underscore-min.js"></script>
 		<script src="/javascripts/backbone-min.js"></script>
+		
 		<script src="/javascripts/queue.js"></script>
+		
+		<!-- templates -->
+		
 		<script id="queueTemplate" type="text/template">
 			<h2><%= name %></h2>
 		</script>
+		
 		<script id="queueListItemTemplate" type="text/template">
 			<a href="#queue/<%= id %>"><%= name %></a>
 		</script>
+		
 	</head>
 	<body>
 		<h1>Penguin</h1>
