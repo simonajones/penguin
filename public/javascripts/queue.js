@@ -50,5 +50,5 @@ $(function() {
 		
 	});
 	
-	var queuesView = new QueuesView({model: new Queues()});
+	var queuesView = new QueuesView();
 });
