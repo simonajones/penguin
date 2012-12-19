@@ -51,5 +51,24 @@ $(function() {
 		
 	});
 	
-	$("#content").html(new QueuesView().render().el);
+	var QueueRouter = Backbone.Router.extend({
+		
+		routes: {
+			"": "list",
+			"queue/:id": "queue"
+		},
+		
+		list: function() {
+			$("#content").html(new QueuesView().render().el);
+		},
+		
+		queue: function(id) {
+			$("#content").html("Queue #" + id);
+		}
+		
+	});
+	
+	new QueueRouter();
+	Backbone.history.start();
+	
 });
