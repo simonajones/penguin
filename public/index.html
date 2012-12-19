@@ -30,17 +30,26 @@
 		</script>
 		
 		<script id="queueListItemTemplate" type="text/template">
-			<li>
-				<a href="#queue/<%= id %>"><%= name %></a>
-			</li>
+			<tr>
+				<td>
+					<a href="#queue/<%= id %>"><%= name %></a>
+				</td>
+			</tr>
 		</script>
 		
 		<script id="queueListTemplate" type="text/template">
-			<ul>
-				<% _.each(items, function(item) { %>
-					<%= item %>
-				<% }); %>
-			</ul>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Queue</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% _.each(items, function(item) { %>
+						<%= item %>
+					<% }); %>
+				</tbody>
+			</table>
 		</script>
 		
 	</head>
