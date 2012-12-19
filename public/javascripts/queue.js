@@ -41,6 +41,7 @@ $(function() {
 		},
 		
 		render: function() {
+			this.$el.empty();
 			_.each(this.model.models, function(item) {
 				var itemView = new QueueView({model: item});
 				this.$el.append(itemView.render().el);
