@@ -37,6 +37,7 @@ $(function() {
 		
 		initialize: function() {
 			this.model.bind("reset", this.render, this);
+			this.model.fetch();
 		},
 		
 		render: function() {
@@ -50,5 +51,4 @@ $(function() {
 	});
 	
 	var queuesView = new QueuesView({model: new Queues()});
-	queuesView.model.fetch();
 });
