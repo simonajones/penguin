@@ -8,7 +8,7 @@ $(function() {
 	
 	var Queues = Backbone.Collection.extend({
 		
-		url: "/queues",
+		url: "/api/queues",
 		
 		model: Queue
 		

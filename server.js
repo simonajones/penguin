@@ -25,7 +25,7 @@ app.configure("development", function()
 	app.use(express.errorHandler());
 });
 
-app.get("/queues", queue.list);
+app.get("/api/queues", queue.list);
 
 http.createServer(app).listen(app.get("port"), function()
 {
