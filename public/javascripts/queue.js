@@ -38,8 +38,6 @@ $(function() {
 		
 		model: new Queue(),
 		
-		tagName: "li",
-		
 		template: _.template($("#queueListItemTemplate").html()),
 			
 		render: function() {
@@ -53,7 +51,7 @@ $(function() {
 		
 		model: new Queues(),
 		
-		tagName: "ul",
+		template: _.template($("#queueListTemplate").html()),
 		
 		initialize: function() {
 			this.model.bind("reset", this.render, this);
@@ -61,11 +59,16 @@ $(function() {
 		},
 		
 		render: function() {
-			this.$el.empty();
+			
+			var itemViews = [];
+			
 			_.each(this.model.models, function(item) {
 				var itemView = new QueueListItemView({model: item});
-				this.$el.append(itemView.render().el);
+				itemViews.push(itemView.render().$el.html());
 			}, this);
+			
+			this.$el.html(this.template({items: itemViews}));
+			
 			return this;
 		},
 		

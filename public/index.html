@@ -23,7 +23,17 @@
 		</script>
 		
 		<script id="queueListItemTemplate" type="text/template">
-			<a href="#queue/<%= id %>"><%= name %></a>
+			<li>
+				<a href="#queue/<%= id %>"><%= name %></a>
+			</li>
+		</script>
+		
+		<script id="queueListTemplate" type="text/template">
+			<ul>
+				<% _.each(items, function(item) { %>
+					<%= item %>
+				<% }); %>
+			</ul>
 		</script>
 		
 	</head>
