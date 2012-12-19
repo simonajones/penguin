@@ -33,7 +33,7 @@ $(function() {
 		
 		model: new Queues(),
 		
-		el: $("#queues"),
+		tagName: "ul",
 		
 		initialize: function() {
 			this.model.bind("reset", this.render, this);
@@ -50,5 +50,5 @@ $(function() {
 		
 	});
 	
-	var queuesView = new QueuesView();
+	$("#content").html(new QueuesView().render().el);
 });
