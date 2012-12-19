@@ -14,13 +14,13 @@ $(function() {
 		
 	});
 	
-	var QueueView = Backbone.View.extend({
+	var QueueListItemView = Backbone.View.extend({
 		
 		model: new Queue(),
 		
 		tagName: "li",
 		
-		template: _.template($("#queueTemplate").html()),
+		template: _.template($("#queueListItemTemplate").html()),
 			
 		render: function() {
 			this.$el.html(this.template(this.model.toJSON()));
@@ -29,7 +29,7 @@ $(function() {
 		
 	});
 	
-	var QueuesView = Backbone.View.extend({
+	var QueueListView = Backbone.View.extend({
 		
 		model: new Queues(),
 		
@@ -43,7 +43,7 @@ $(function() {
 		render: function() {
 			this.$el.empty();
 			_.each(this.model.models, function(item) {
-				var itemView = new QueueView({model: item});
+				var itemView = new QueueListItemView({model: item});
 				this.$el.append(itemView.render().el);
 			}, this);
 			return this;
@@ -59,7 +59,7 @@ $(function() {
 		},
 		
 		list: function() {
-			$("#content").html(new QueuesView().render().el);
+			$("#content").html(new QueueListView().render().el);
 		},
 		
 		queue: function(id) {
