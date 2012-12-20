@@ -23,9 +23,9 @@ $(function() {
 	Router({
 		
 		"/queues": function() {
-			pageModel.section("queuesView");
 			$.getJSON("/api/queues", function(data) {
 				ko.mapping.fromJS(data, {}, pageModel.queues);
+				pageModel.section("queuesView");
 			});
 		},
 		
@@ -34,9 +34,9 @@ $(function() {
 		},
 		
 		"/queue/:id": function(id) {
-			pageModel.section("queueView");
 			$.getJSON("/api/queue/" + id, function(data) {
 				ko.mapping.fromJS(data, {}, pageModel.queue);
+				pageModel.section("queueView");
 			});
 		}
 		
