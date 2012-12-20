@@ -7,24 +7,27 @@ $(function() {
 	// ------------------------------------------------------------------------
 	
 	var pageModel = ko.mapping.fromJS({
-		section: "queuesView",
-		queuesView: {
-			queues: []
+		section: "queuesView"
+	});
+	
+	pageModel.queuesView = ko.mapping.fromJS({
+		queues: []
+	});
+	
+	pageModel.queueView = ko.mapping.fromJS({
+		queue: {
+			name: null
+		}
+	});
+	
+	pageModel.queueCreate = ko.mapping.fromJS({
+		queue: {
+			name: null,
 		},
-		queueView: {
-			queue: {
-				name: null
-			}
-		},
-		queueCreate: {
-			queue: {
-				name: null,
-			},
-			create: function() {
-				postJSON("/api/queues", ko.toJSON(this.queue), function() {
-					// TODO: show new queue
-				});
-			}
+		create: function() {
+			postJSON("/api/queues", ko.toJSON(this.queue), function() {
+				// TODO: show new queue
+			});
 		}
 	});
 	
