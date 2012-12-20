@@ -10,9 +10,9 @@ $(function() {
 		section: "queuesView"
 	});
 	
-	pageModel.queuesView = ko.mapping.fromJS({
+	pageModel.queuesView = {
 		
-		queues: [],
+		queues: ko.mapping.fromJS([]),
 		
 		show: function() {
 			$.getJSON("/api/queues", function(data) {
@@ -21,13 +21,13 @@ $(function() {
 			});
 		}
 	
-	});
+	};
 	
-	pageModel.queueView = ko.mapping.fromJS({
+	pageModel.queueView = {
 		
-		queue: {
+		queue: ko.mapping.fromJS({
 			name: null
-		},
+		}),
 		
 		show: function(id) {
 			$.getJSON("/api/queue/" + id, function(data) {
@@ -36,13 +36,13 @@ $(function() {
 			});
 		}
 		
-	});
+	};
 	
-	pageModel.queueCreate = ko.mapping.fromJS({
+	pageModel.queueCreate = {
 		
-		queue: {
+		queue: ko.mapping.fromJS({
 			name: null,
-		},
+		}),
 		
 		show: function() {
 			pageModel.section("queueCreate");
@@ -53,9 +53,9 @@ $(function() {
 				// TODO: show new queue
 				window.location.hash = "/queues";
 			});
-		}
+		},
 		
-	});
+	};
 	
 	ko.applyBindings(pageModel);
 	
