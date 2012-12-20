@@ -63,8 +63,8 @@
 				
 				<!-- queue view -->
 				
-				<div id="queueView" data-bind="visible: section() == $element.id">
-					<h2 data-bind="text: queue.name"></h2>
+				<div id="queueView" data-bind="visible: section() == $element.id, with: queue">
+					<h2 data-bind="text: name"></h2>
 				</div>
 				
 				<!-- create queue -->
