@@ -14,57 +14,18 @@
 		
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 		
-		<!-- backbone.js -->
+		<!-- director.js -->
 		
-		<script src="/js/underscore-min.js"></script>
-		<script src="/js/backbone-min.js"></script>
+		<script src="/js/director.min.js"></script>
+
+		<!-- knockout.js -->
+		
+		<script src="http://ajax.aspnetcdn.com/ajax/knockout/knockout-2.2.0.js"></script>
+		<script src="/js/knockout.mapping-latest.js"></script>
 		
 		<!-- penguin -->
 		
 		<script src="/js/queue.js"></script>
-		
-		<!-- templates -->
-		
-		<script id="queueTemplate" type="text/template">
-			<h2><%= name %></h2>
-		</script>
-		
-		<script id="queueCreateTemplate" type="text/template">
-			<form>
-				<fieldset>
-					<legend>New Queue</legend>
-					<label for="name">Name</label>
-					<input id="name" type="text" value="<%= name %>" required/>
-					<div class="form-actions">
-						<button type="submit" class="btn btn-primary">Create</button>
-						<a class="btn" href="#">Cancel</a>
-					</div>
-				</fieldset>
-			</form>
-		</script>
-		
-		<script id="queueListItemTemplate" type="text/template">
-			<tr>
-				<td>
-					<a href="#queue/<%= id %>"><%= name %></a>
-				</td>
-			</tr>
-		</script>
-		
-		<script id="queueListTemplate" type="text/template">
-			<table class="table table-striped">
-				<thead>
-					<tr>
-						<th>Queue</th>
-					</tr>
-				</thead>
-				<tbody>
-					<% _.each(items, function(item) { %>
-						<%= item %>
-					<% }); %>
-				</tbody>
-			</table>
-		</script>
 		
 	</head>
 	
@@ -75,11 +36,54 @@
 				<div class="navbar-inner">
 					<a class="brand" href="/">Penguin</a>
 					<ul class="nav">
-						<li><a href="#queue/new">New Queue</a></li>
+						<li><a href="#/queue/new">New Queue</a></li>
 					</ul>
 				</div>
 			</div>
-			<div id="content"></div>
+			<div id="content">
+
+				<!-- queues view -->
+							
+				<div id="queuesView" data-bind="visible: section() == 'queuesView'">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>Queue</th>
+							</tr>
+						</thead>
+						<tbody data-bind="foreach: queues">
+							<tr>
+								<td>
+									<a data-bind="attr: {href: '#/queue/' + id()}, text: name"></a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				
+				<!-- queue view -->
+				
+				<div id="queueView" data-bind="visible: section() == 'queueView'">
+					<h2 data-bind="text: queue.name"></h2>
+				</div>
+				
+				<!-- create queue -->
+				
+				<div id="queueCreate" data-bind="visible: section() == 'queueCreate'">
+					<form>
+						<fieldset>
+							<legend>New Queue</legend>
+							<label for="name">Name</label>
+							<input id="name" type="text" required data-bind="attr: {value: name}"/>
+							<div class="form-actions">
+								<button type="submit" class="btn btn-primary">Create</button>
+								<a class="btn" href="#/queues">Cancel</a>
+							</div>
+						</fieldset>
+					</form>
+				</div>
+				
+			</div>
 		</div>
 		
 		<!-- Bootstrap -->

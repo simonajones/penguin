@@ -6,127 +6,40 @@ $(function() {
 	// Models
 	// ------------------------------------------------------------------------
 	
-	var Queue = Backbone.Model.extend({
-		
-		urlRoot: "/api/queue"
-		
-	});
-	
-	var Queues = Backbone.Collection.extend({
-		
-		url: "/api/queues",
-		
-		model: Queue
-		
-	});
-	
-	// ------------------------------------------------------------------------
-	// Views
-	// ------------------------------------------------------------------------
-	
-	var QueueView = Backbone.View.extend({
-		
-		model: new Queue(),
-		
-		template: _.template($("#queueTemplate").html()),
-		
-		initialize: function() {
-			this.model.bind("change", this.render, this);
-			this.model.fetch();
-		},
-		
-		render: function() {
-			this.$el.html(this.template(this.model.toJSON()));
-			return this;
+	var pageModel = ko.mapping.fromJS({
+		section: "queuesView",
+		queues: [],
+		queue: {
+			name: null
 		}
-		
 	});
 	
-	var QueueCreateView = Backbone.View.extend({
-		
-		model: new Queue(),
-		
-		template: _.template($("#queueCreateTemplate").html()),
-		
-		initialize: function() {
-			this.model.bind("change", this.render, this);
-		},
-		
-		render: function() {
-			this.$el.html(this.template(this.model.toJSON()));
-			return this;
-		}
-		
-	});
-	
-	var QueueListItemView = Backbone.View.extend({
-		
-		model: new Queue(),
-		
-		template: _.template($("#queueListItemTemplate").html()),
-			
-		render: function() {
-			this.$el.html(this.template(this.model.toJSON()));
-			return this;
-		}
-		
-	});
-	
-	var QueueListView = Backbone.View.extend({
-		
-		model: new Queues(),
-		
-		template: _.template($("#queueListTemplate").html()),
-		
-		initialize: function() {
-			this.model.bind("reset", this.render, this);
-			this.model.fetch();
-		},
-		
-		render: function() {
-			
-			var itemViews = [];
-			
-			_.each(this.model.models, function(item) {
-				var itemView = new QueueListItemView({model: item});
-				itemViews.push(itemView.render().$el.html());
-			}, this);
-			
-			this.$el.html(this.template({items: itemViews}));
-			
-			return this;
-		},
-		
-	});
+	ko.applyBindings(pageModel);
 	
 	// ------------------------------------------------------------------------
 	// Router
 	// ------------------------------------------------------------------------
 	
-	var QueueRouter = Backbone.Router.extend({
+	Router({
 		
-		routes: {
-			"": "list",
-			"queue/new": "create",
-			"queue/:id": "queue"
+		"/queues": function() {
+			pageModel.section("queuesView");
+			$.getJSON("/api/queues", function(data) {
+				ko.mapping.fromJS(data, {}, pageModel.queues);
+			});
 		},
 		
-		list: function() {
-			$("#content").html(new QueueListView().render().el);
+		"/queue/new": function() {
+			pageModel.section("queueCreate");
 		},
 		
-		queue: function(id) {
-			var queueView = new QueueView({model: new Queue({id: id})});
-			$("#content").html(queueView.render().el);
-		},
+		"/queue/:id": function(id) {
+			pageModel.section("queueView");
+			$.getJSON("/api/queue/" + id, function(data) {
+				ko.mapping.fromJS(data, {}, pageModel.queue);
+			});
+		}
 		
-		create: function() {
-			$("#content").html(new QueueCreateView().render().el);
-		},
-		
-	});
-	
-	new QueueRouter();
-	Backbone.history.start();
+	}).init("/queues");
 	
 });
