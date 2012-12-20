@@ -51,6 +51,7 @@ $(function() {
 		create: function() {
 			postJSON("/api/queues", ko.toJSON(this.queue), function() {
 				// TODO: show new queue
+				window.location.hash = "/queues";
 			});
 		}
 		
