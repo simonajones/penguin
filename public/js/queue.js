@@ -11,18 +11,33 @@ $(function() {
 	});
 	
 	pageModel.queuesView = ko.mapping.fromJS({
-		queues: []
+		queues: [],
+		show: function() {
+			$.getJSON("/api/queues", function(data) {
+				ko.mapping.fromJS(data, {}, pageModel.queuesView.queues);
+				pageModel.section("queuesView");
+			});
+		}
 	});
 	
 	pageModel.queueView = ko.mapping.fromJS({
 		queue: {
 			name: null
+		},
+		show: function(id) {
+			$.getJSON("/api/queue/" + id, function(data) {
+				ko.mapping.fromJS(data, {}, pageModel.queueView.queue);
+				pageModel.section("queueView");
+			});
 		}
 	});
 	
 	pageModel.queueCreate = ko.mapping.fromJS({
 		queue: {
 			name: null,
+		},
+		show: function() {
+			pageModel.section("queueCreate");
 		},
 		create: function() {
 			postJSON("/api/queues", ko.toJSON(this.queue), function() {
@@ -39,23 +54,11 @@ $(function() {
 	
 	Router({
 		
-		"/queues": function() {
-			$.getJSON("/api/queues", function(data) {
-				ko.mapping.fromJS(data, {}, pageModel.queuesView.queues);
-				pageModel.section("queuesView");
-			});
-		},
+		"/queues": pageModel.queuesView.show,
 		
-		"/queue/new": function() {
-			pageModel.section("queueCreate");
-		},
+		"/queue/new": pageModel.queueCreate.show,
 		
-		"/queue/:id": function(id) {
-			$.getJSON("/api/queue/" + id, function(data) {
-				ko.mapping.fromJS(data, {}, pageModel.queueView.queue);
-				pageModel.section("queueView");
-			});
-		}
+		"/queue/:id": pageModel.queueView.show
 		
 	}).init("/queues");
 
