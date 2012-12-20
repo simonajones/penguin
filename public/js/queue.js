@@ -21,8 +21,9 @@ $(function() {
 				name: null,
 			},
 			create: function() {
-				// TODO: POST /api/queues
-				console.log(this.queue.name());
+				postJSON("/api/queues", ko.toJSON(this.queue), function() {
+					// TODO: show new queue
+				});
 			}
 		}
 	});
@@ -54,5 +55,20 @@ $(function() {
 		}
 		
 	}).init("/queues");
+
+	// ------------------------------------------------------------------------
+	// Utilities
+	// ------------------------------------------------------------------------
+	
+	// TODO: move elsewhere
+	var postJSON = function(url, data, success) {
+		return $.ajax({
+			type: "POST",
+			url: url,
+			contentType: "application/json",
+			data: data,
+			success: success
+		});
+	};
 	
 });

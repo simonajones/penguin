@@ -27,6 +27,7 @@ app.configure("development", function()
 
 app.get("/api/queues", queue.list);
 app.get("/api/queue/:id", queue.get);
+app.post("/api/queues", queue.create);
 
 http.createServer(app).listen(app.get("port"), function()
 {

@@ -23,3 +23,14 @@ exports.get = function(request, response)
 	
 	response.send(queues[id] || 404);
 };
+
+exports.create = function(request, response)
+{
+	var name = request.body.name;
+
+	// TODO: create queue
+	console.log("Create Queue: " + name);
+	
+	// TODO: return new queue id
+	response.send(201);
+};
