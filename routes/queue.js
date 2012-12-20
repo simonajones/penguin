@@ -1,15 +1,19 @@
 // Queue Resource
 
+var identifier = 1;
+
+var createQueue = function(name)
+{
+	return {
+		id: identifier++,
+		name: name
+	};
+};
+
 var queues =
 [
-	{
-		id: 1,
-		name: "Logistics"
-	},
-	{
-		id: 2,
-		name: "Pricing Management"
-	}
+	createQueue("Logistics"),
+	createQueue("Pricing Management")
 ];
 
 exports.list = function(request, response)
@@ -27,9 +31,9 @@ exports.get = function(request, response)
 exports.create = function(request, response)
 {
 	var name = request.body.name;
+	var queue = createQueue(name);
 
-	// TODO: create queue
-	console.log("Create Queue: " + name);
+	queues.push(queue);
 	
 	// TODO: return new queue id
 	response.send(201);
