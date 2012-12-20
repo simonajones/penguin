@@ -1,6 +1,4 @@
-/**
- * Module dependencies.
- */
+// Penguin Server
 
 var express = require("express"),
 	queue = require("./routes/queue"),
