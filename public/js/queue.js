@@ -45,6 +45,7 @@ $(function() {
 		}),
 		
 		show: function() {
+			// TODO: reset model
 			pageModel.section("queueCreate");
 		},
 		
