@@ -42,6 +42,23 @@ $(function() {
 		
 	});
 	
+	var QueueCreateView = Backbone.View.extend({
+		
+		model: new Queue(),
+		
+		template: _.template($("#queueCreateTemplate").html()),
+		
+		initialize: function() {
+			this.model.bind("change", this.render, this);
+		},
+		
+		render: function() {
+			this.$el.html(this.template(this.model.toJSON()));
+			return this;
+		}
+		
+	});
+	
 	var QueueListItemView = Backbone.View.extend({
 		
 		model: new Queue(),
@@ -90,6 +107,7 @@ $(function() {
 		
 		routes: {
 			"": "list",
+			"queue/new": "create",
 			"queue/:id": "queue"
 		},
 		
@@ -100,7 +118,11 @@ $(function() {
 		queue: function(id) {
 			var queueView = new QueueView({model: new Queue({id: id})});
 			$("#content").html(queueView.render().el);
-		}
+		},
+		
+		create: function() {
+			$("#content").html(new QueueCreateView().render().el);
+		},
 		
 	});
 	
