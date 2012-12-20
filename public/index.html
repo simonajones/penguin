@@ -44,7 +44,7 @@
 
 				<!-- queues view -->
 							
-				<div id="queuesView" data-bind="visible: section() == $element.id">
+				<div id="queuesView" data-bind="visible: section() == $element.id, with: queuesView">
 					<table class="table table-striped">
 						<thead>
 							<tr>
@@ -63,13 +63,13 @@
 				
 				<!-- queue view -->
 				
-				<div id="queueView" data-bind="visible: section() == $element.id, with: queue">
+				<div id="queueView" data-bind="visible: section() == $element.id, with: queueView.queue">
 					<h2 data-bind="text: name"></h2>
 				</div>
 				
 				<!-- create queue -->
 				
-				<div id="queueCreate" data-bind="visible: section() == $element.id, with: queue">
+				<div id="queueCreate" data-bind="visible: section() == $element.id, with: queueCreate.queue">
 					<form>
 						<fieldset>
 							<legend>New Queue</legend>

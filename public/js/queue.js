@@ -8,9 +8,18 @@ $(function() {
 	
 	var pageModel = ko.mapping.fromJS({
 		section: "queuesView",
-		queues: [],
-		queue: {
-			name: null
+		queuesView: {
+			queues: []
+		},
+		queueView: {
+			queue: {
+				name: null
+			}
+		},
+		queueCreate: {
+			queue: {
+				name: null
+			}
 		}
 	});
 	
@@ -24,7 +33,7 @@ $(function() {
 		
 		"/queues": function() {
 			$.getJSON("/api/queues", function(data) {
-				ko.mapping.fromJS(data, {}, pageModel.queues);
+				ko.mapping.fromJS(data, {}, pageModel.queuesView.queues);
 				pageModel.section("queuesView");
 			});
 		},
@@ -35,7 +44,7 @@ $(function() {
 		
 		"/queue/:id": function(id) {
 			$.getJSON("/api/queue/" + id, function(data) {
-				ko.mapping.fromJS(data, {}, pageModel.queue);
+				ko.mapping.fromJS(data, {}, pageModel.queueView.queue);
 				pageModel.section("queueView");
 			});
 		}
