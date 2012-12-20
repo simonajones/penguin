@@ -18,7 +18,11 @@ $(function() {
 		},
 		queueCreate: {
 			queue: {
-				name: null
+				name: null,
+			},
+			create: function() {
+				// TODO: POST /api/queues
+				console.log(this.queue.name());
 			}
 		}
 	});
