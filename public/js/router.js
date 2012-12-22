@@ -3,7 +3,7 @@
  */
 define(["models/page", "models/queueCreate", "models/queuesView", "models/queueView", "director"], function(page) {
 
-	var router = Router({
+	return Router({
 		
 		"/queues": page.queuesView.show,
 		
