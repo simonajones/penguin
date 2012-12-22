@@ -1,0 +1,22 @@
+/*
+ * Queue create view-model.
+ */
+var queueCreate = {
+	
+	queue: ko.mapping.fromJS({
+		name: null,
+	}),
+	
+	show: function() {
+		// TODO: reset model
+		page.show(queueCreate);
+	},
+	
+	create: function() {
+		$.postJSON("/api/queues", ko.toJSON(this.queue), function() {
+			// TODO: show new queue
+			window.location.hash = "/queues";
+		});
+	},
+	
+};
