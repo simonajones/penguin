@@ -1,7 +1,7 @@
 /*
  * Queue view view-model.
  */
-var queueView = {
+page.queueView = {
 	
 	queue: ko.mapping.fromJS({
 		name: null
@@ -9,8 +9,8 @@ var queueView = {
 	
 	show: function(id) {
 		$.getJSON("/api/queue/" + id, function(data) {
-			ko.mapping.fromJS(data, {}, queueView.queue);
-			page.show(queueView);
+			ko.mapping.fromJS(data, {}, page.queueView.queue);
+			page.show(page.queueView);
 		});
 	}
 	

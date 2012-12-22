@@ -1,7 +1,7 @@
 /*
  * Queue create view-model.
  */
-var queueCreate = {
+page.queueCreate = {
 	
 	queue: ko.mapping.fromJS({
 		name: null,
@@ -9,7 +9,7 @@ var queueCreate = {
 	
 	show: function() {
 		// TODO: reset model
-		page.show(queueCreate);
+		page.show(page.queueCreate);
 	},
 	
 	create: function() {

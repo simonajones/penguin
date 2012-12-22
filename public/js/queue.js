@@ -4,20 +4,14 @@
 // Models
 // ------------------------------------------------------------------------
 
-var appModel = $.extend({
-	queuesView: queuesView,
-	queueView: queueView,
-	queueCreate: queueCreate
-}, page);
-
-ko.applyBindings(appModel);
+ko.applyBindings(page);
 
 // ------------------------------------------------------------------------
 // Router
 // ------------------------------------------------------------------------
 
 Router({
-	"/queues": appModel.queuesView.show,
-	"/queue/new": appModel.queueCreate.show,
-	"/queue/:id": appModel.queueView.show
+	"/queues": page.queuesView.show,
+	"/queue/new": page.queueCreate.show,
+	"/queue/:id": page.queueView.show
 }).init("/queues");
