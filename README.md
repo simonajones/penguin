@@ -1,4 +1,4 @@
-penguin
+Penguin
 =======
 
 A virtual penguin queue.
