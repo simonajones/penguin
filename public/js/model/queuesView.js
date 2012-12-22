@@ -10,7 +10,7 @@ define(["knockout", "knockout-mapping", "model/page"], function(ko, mapping, pag
 		show: function() {
 			$.getJSON("/api/queues", function(data) {
 				mapping.fromJS(data, {}, page.queuesView.queues);
-				page.show(page.queuesView);
+				page.show("queuesView");
 			});
 		}
 

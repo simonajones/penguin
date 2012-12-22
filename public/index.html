@@ -16,6 +16,64 @@
 		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.1/require.min.js"
 			data-main="/js/client.js"></script>
 		
+		<!-- templates -->
+		
+		<script id="queuesView" type="text/html">
+			<div data-bind="with: queuesView">
+				
+				<div data-bind="if: queues().length">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>Queue</th>
+							</tr>
+						</thead>
+						<tbody data-bind="foreach: queues">
+							<tr>
+								<td>
+									<a data-bind="attr: {href: '#/queue/' + id()}, text: name"></a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+					
+				<div data-bind="ifnot: queues().length">
+					<p>There are no queues.  Would you like to <a href="#/queue/new">create one</a>?</p>
+				</div>
+					
+			</div>
+		</script>
+		
+		<script id="queueView" type="text/html">
+			<div data-bind="with: queueView">
+				<table class="table table-striped" data-bind="with: queue">
+					<thead>
+						<tr>
+							<th data-bind="text: name"></th>
+						</tr>
+					</thead>
+					<!-- TODO: queue entries -->
+				</table>
+			</div>
+		</script>
+		
+		<script id="queueCreate" type="text/html">
+			<div data-bind="with: queueCreate">
+				<form data-bind="submit: create">
+					<fieldset data-bind="with: queue">
+						<legend>New Queue</legend>
+						<label for="name">Name</label>
+						<input id="name" type="text" required data-bind="value: name"/>
+						<div class="form-actions">
+							<button type="submit" class="btn btn-primary">Create</button>
+							<a class="btn" href="#/queues">Cancel</a>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+		</script>
+		
 	</head>
 	
 	<body>
@@ -31,65 +89,7 @@
 				</div>
 			</div>
 			
-			<div id="content">
-
-				<!-- queues view -->
-							
-				<div data-bind="visible: show() == queuesView, with: queuesView">
-				
-					<div data-bind="if: queues().length">
-						<table class="table table-striped">
-							<thead>
-								<tr>
-									<th>Queue</th>
-								</tr>
-							</thead>
-							<tbody data-bind="foreach: queues">
-								<tr>
-									<td>
-										<a data-bind="attr: {href: '#/queue/' + id()}, text: name"></a>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-					
-					<div data-bind="ifnot: queues().length">
-						<p>There are no queues.  Would you like to <a href="#/queue/new">create one</a>?</p>
-					</div>
-					
-				</div>
-				
-				<!-- queue view -->
-				
-				<div data-bind="visible: show() == queueView, with: queueView">
-					<table class="table table-striped" data-bind="with: queue">
-						<thead>
-							<tr>
-								<th data-bind="text: name"></th>
-							</tr>
-						</thead>
-						<!-- TODO: queue entries -->
-					</table>
-				</div>
-				
-				<!-- create queue -->
-				
-				<div data-bind="visible: show() == queueCreate, with: queueCreate">
-					<form data-bind="submit: create">
-						<fieldset data-bind="with: queue">
-							<legend>New Queue</legend>
-							<label for="name">Name</label>
-							<input id="name" type="text" required data-bind="value: name"/>
-							<div class="form-actions">
-								<button type="submit" class="btn btn-primary">Create</button>
-								<a class="btn" href="#/queues">Cancel</a>
-							</div>
-						</fieldset>
-					</form>
-				</div>
-				
-			</div>
+			<div id="content" data-bind="template: {if: show, name: showValue}"></div>
 			
 		</div>
 		

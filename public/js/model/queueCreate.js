@@ -13,7 +13,7 @@ define(["knockout", "knockout-mapping", "model/page", "jquery-json"], function(k
 		
 		show: function() {
 			page.queueCreate.reset();
-			page.show(page.queueCreate);
+			page.show("queueCreate");
 		},
 		
 		create: function() {
