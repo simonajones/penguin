@@ -3,14 +3,16 @@
  */
 define(["knockout", "knockout-mapping", "model/page", "jquery-json"], function(ko, mapping, page) {
 	
+	var emptyQueue = {
+		name: null
+	};
+	
 	page.queueCreate = {
 		
-		queue: mapping.fromJS({
-			name: null,
-		}),
+		queue: mapping.fromJS(emptyQueue),
 		
 		show: function() {
-			// TODO: reset model
+			page.queueCreate.reset();
 			page.show(page.queueCreate);
 		},
 		
@@ -20,6 +22,10 @@ define(["knockout", "knockout-mapping", "model/page", "jquery-json"], function(k
 				window.location.hash = "/queues";
 			});
 		},
+		
+		reset: function() {
+			mapping.fromJS(emptyQueue, page.queueCreate.queue);
+		}
 		
 	};
 	
