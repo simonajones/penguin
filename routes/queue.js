@@ -36,6 +36,5 @@ exports.create = function(request, response)
 
 	queues.push(queue);
 	
-	// TODO: return new queue id
-	response.send(201);
+	response.send(201, {id: queue.id});
 };
