@@ -20,7 +20,6 @@ var queuesView = {
 	}
 
 };
-pageModel.queuesView = queuesView;
 
 var queueView = {
 	
@@ -36,7 +35,6 @@ var queueView = {
 	}
 	
 };
-pageModel.queueView = queueView;
 
 var queueCreate = {
 	
@@ -57,16 +55,21 @@ var queueCreate = {
 	},
 	
 };
-pageModel.queueCreate = queueCreate;
 
-ko.applyBindings(pageModel);
+var appModel = $.extend({
+	queuesView: queuesView,
+	queueView: queueView,
+	queueCreate: queueCreate
+}, pageModel);
+
+ko.applyBindings(appModel);
 
 // ------------------------------------------------------------------------
 // Router
 // ------------------------------------------------------------------------
 
 Router({
-	"/queues": pageModel.queuesView.show,
-	"/queue/new": pageModel.queueCreate.show,
-	"/queue/:id": pageModel.queueView.show
+	"/queues": appModel.queuesView.show,
+	"/queue/new": appModel.queueCreate.show,
+	"/queue/:id": appModel.queueView.show
 }).init("/queues");
