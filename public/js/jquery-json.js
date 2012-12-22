@@ -1,5 +1,5 @@
 /*
- * jQuery Extensions.
+ * jQuery plugin that provides additional AJAX methods for JSON.
  */
 define(["jquery"], function(jQuery) {
 
