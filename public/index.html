@@ -36,20 +36,28 @@
 				<!-- queues view -->
 							
 				<div data-bind="visible: show() == queuesView, with: queuesView">
-					<table class="table table-striped">
-						<thead>
-							<tr>
-								<th>Queue</th>
-							</tr>
-						</thead>
-						<tbody data-bind="foreach: queues">
-							<tr>
-								<td>
-									<a data-bind="attr: {href: '#/queue/' + id()}, text: name"></a>
-								</td>
-							</tr>
-						</tbody>
-					</table>
+				
+					<div data-bind="if: queues().length">
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th>Queue</th>
+								</tr>
+							</thead>
+							<tbody data-bind="foreach: queues">
+								<tr>
+									<td>
+										<a data-bind="attr: {href: '#/queue/' + id()}, text: name"></a>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					
+					<div data-bind="ifnot: queues().length">
+						<p>There are no queues.  Would you like to <a href="#/queue/new">create one</a>?</p>
+					</div>
+					
 				</div>
 				
 				<!-- queue view -->
