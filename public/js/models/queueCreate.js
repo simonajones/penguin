@@ -1,5 +1,5 @@
 /*
- * Queue create view-model.
+ * View model for creating a queue.
  */
 define(["knockout", "knockout-mapping", "models/page", "jquery-json"], function(ko, mapping, page) {
 	

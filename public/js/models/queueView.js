@@ -1,5 +1,5 @@
 /*
- * Queue view view-model.
+ * View model for displaying a queue.
  */
 define(["knockout", "knockout-mapping", "models/page"], function(ko, mapping, page) {
 
