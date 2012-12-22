@@ -29,7 +29,7 @@
 
 				<!-- queues view -->
 							
-				<div data-bind="visible: section() == queuesView, with: queuesView">
+				<div data-bind="visible: show() == queuesView, with: queuesView">
 					<table class="table table-striped">
 						<thead>
 							<tr>
@@ -48,7 +48,7 @@
 				
 				<!-- queue view -->
 				
-				<div data-bind="visible: section() == queueView, with: queueView">
+				<div data-bind="visible: show() == queueView, with: queueView">
 					<table class="table table-striped" data-bind="with: queue">
 						<thead>
 							<tr>
@@ -61,7 +61,7 @@
 				
 				<!-- create queue -->
 				
-				<div data-bind="visible: section() == queueCreate, with: queueCreate">
+				<div data-bind="visible: show() == queueCreate, with: queueCreate">
 					<form data-bind="submit: create">
 						<fieldset data-bind="with: queue">
 							<legend>New Queue</legend>
