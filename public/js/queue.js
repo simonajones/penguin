@@ -4,7 +4,7 @@
 // Models
 // ------------------------------------------------------------------------
 
-var pageModel = ko.mapping.fromJS({
+var page = ko.mapping.fromJS({
 	show: null
 });
 
@@ -15,7 +15,7 @@ var queuesView = {
 	show: function() {
 		$.getJSON("/api/queues", function(data) {
 			ko.mapping.fromJS(data, {}, queuesView.queues);
-			pageModel.show(queuesView);
+			page.show(queuesView);
 		});
 	}
 
@@ -30,7 +30,7 @@ var queueView = {
 	show: function(id) {
 		$.getJSON("/api/queue/" + id, function(data) {
 			ko.mapping.fromJS(data, {}, queueView.queue);
-			pageModel.show(queueView);
+			page.show(queueView);
 		});
 	}
 	
@@ -44,7 +44,7 @@ var queueCreate = {
 	
 	show: function() {
 		// TODO: reset model
-		pageModel.show(queueCreate);
+		page.show(queueCreate);
 	},
 	
 	create: function() {
@@ -60,7 +60,7 @@ var appModel = $.extend({
 	queuesView: queuesView,
 	queueView: queueView,
 	queueCreate: queueCreate
-}, pageModel);
+}, page);
 
 ko.applyBindings(appModel);
 
