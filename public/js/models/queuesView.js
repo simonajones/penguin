@@ -1,7 +1,7 @@
 /*
  * Queues view view-model.
  */
-define(["knockout", "knockoutmapping", "models/page"], function(ko, mapping, page) {
+define(["knockout", "knockout-mapping", "models/page"], function(ko, mapping, page) {
 	
 	page.queuesView = {
 		
