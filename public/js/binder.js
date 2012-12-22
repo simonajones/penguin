@@ -1,8 +1,8 @@
 /*
  * Binder.
  */
-define(["knockout", "models/page", "models/queueCreate", "models/queuesView", "models/queueView"], function(ko, page) {
+define(["knockout", "models/app"], function(ko, app) {
 	
-	ko.applyBindings(page);
+	ko.applyBindings(app);
 	
 });

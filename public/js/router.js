@@ -1,15 +1,15 @@
 /*
  * Router.
  */
-define(["models/page", "models/queueCreate", "models/queuesView", "models/queueView", "director"], function(page) {
+define(["models/app", "director"], function(app) {
 
 	return Router({
 		
-		"/queues": page.queuesView.show,
+		"/queues": app.queuesView.show,
 		
-		"/queue/new": page.queueCreate.show,
+		"/queue/new": app.queueCreate.show,
 		
-		"/queue/:id": page.queueView.show
+		"/queue/:id": app.queueView.show
 		
 	}).init("/queues");
 	
