@@ -1,16 +1,6 @@
 /*
  * Queue resource.
  */
-var identifier = 1;
-
-var createQueue = function(name)
-{
-	return {
-		id: identifier++,
-		name: name
-	};
-};
-
 var queues = [];
 
 exports.list = function(request, response)
@@ -33,4 +23,14 @@ exports.create = function(request, response)
 	queues.push(queue);
 	
 	response.send(201, {id: queue.id});
+};
+
+var identifier = 1;
+
+var createQueue = function(name)
+{
+	return {
+		id: identifier++,
+		name: name
+	};
 };
