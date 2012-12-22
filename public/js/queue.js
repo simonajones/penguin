@@ -4,13 +4,13 @@
 // Models
 // ------------------------------------------------------------------------
 
-var page = ko.mapping.fromJS({
-	show: null
-});
+var page = {
+	show: ko.observable()
+};
 
 var queuesView = {
 	
-	queues: ko.mapping.fromJS([]),
+	queues: ko.observableArray(),
 	
 	show: function() {
 		$.getJSON("/api/queues", function(data) {
