@@ -1,7 +1,7 @@
 /*
  * View model for creating a queue.
  */
-define(["knockout", "knockout-mapping", "models/page", "jquery-json"], function(ko, mapping, page) {
+define(["knockout", "knockout-mapping", "model/page", "jquery-json"], function(ko, mapping, page) {
 	
 	page.queueCreate = {
 		

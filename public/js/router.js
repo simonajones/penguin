@@ -1,7 +1,7 @@
 /*
  * Configures Director to route hash locations to their corresponding view model functions.
  */
-define(["models/app", "director"], function(app) {
+define(["model/app", "director"], function(app) {
 
 	return Router({
 		
