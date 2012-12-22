@@ -48,7 +48,7 @@ pageModel.queueCreate = {
 	},
 	
 	create: function() {
-		postJSON("/api/queues", ko.toJSON(this.queue), function() {
+		$.postJSON("/api/queues", ko.toJSON(this.queue), function() {
 			// TODO: show new queue
 			window.location.hash = "/queues";
 		});
@@ -67,18 +67,3 @@ Router({
 	"/queue/new": pageModel.queueCreate.show,
 	"/queue/:id": pageModel.queueView.show
 }).init("/queues");
-
-// ------------------------------------------------------------------------
-// Utilities
-// ------------------------------------------------------------------------
-
-// TODO: move elsewhere
-var postJSON = function(url, data, success) {
-	return $.ajax({
-		type: "POST",
-		url: url,
-		contentType: "application/json",
-		data: data,
-		success: success
-	});
-};
