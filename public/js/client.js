@@ -8,7 +8,7 @@ require.config({
 		knockout: "http://ajax.aspnetcdn.com/ajax/knockout/knockout-2.2.0",
 		knockoutmapping: "lib/knockout.mapping-latest",
 		director: "lib/director.min",
-		bootstrap: "lib/bootstrap.min"
+		bootstrap: "http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min"
 	},
 	
 	shim: {
