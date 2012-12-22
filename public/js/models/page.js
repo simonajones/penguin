@@ -1,8 +1,12 @@
 /*
  * Page view-model.
  */
-var page = {
+define(["knockout"], function(ko) {
 	
-	show: ko.observable()
+	return {
+		
+		show: ko.observable()
+		
+	};
 	
-};
+});

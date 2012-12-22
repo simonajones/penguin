@@ -1,22 +1,26 @@
 /*
  * Queue create view-model.
  */
-page.queueCreate = {
+define(["knockout", "knockoutmapping", "models/page", "jquery-extra"], function(ko, mapping, page) {
 	
-	queue: ko.mapping.fromJS({
-		name: null,
-	}),
+	page.queueCreate = {
+		
+		queue: mapping.fromJS({
+			name: null,
+		}),
+		
+		show: function() {
+			// TODO: reset model
+			page.show(page.queueCreate);
+		},
+		
+		create: function() {
+			$.postJSON("/api/queues", ko.toJSON(this.queue), function() {
+				// TODO: show new queue
+				window.location.hash = "/queues";
+			});
+		},
+		
+	};
 	
-	show: function() {
-		// TODO: reset model
-		page.show(page.queueCreate);
-	},
-	
-	create: function() {
-		$.postJSON("/api/queues", ko.toJSON(this.queue), function() {
-			// TODO: show new queue
-			window.location.hash = "/queues";
-		});
-	},
-	
-};
+});
