@@ -8,20 +8,21 @@ var pageModel = ko.mapping.fromJS({
 	section: "queuesView"
 });
 
-pageModel.queuesView = {
+var queuesView = {
 	
 	queues: ko.mapping.fromJS([]),
 	
 	show: function() {
 		$.getJSON("/api/queues", function(data) {
-			ko.mapping.fromJS(data, {}, pageModel.queuesView.queues);
+			ko.mapping.fromJS(data, {}, queuesView.queues);
 			pageModel.section("queuesView");
 		});
 	}
 
 };
+pageModel.queuesView = queuesView;
 
-pageModel.queueView = {
+var queueView = {
 	
 	queue: ko.mapping.fromJS({
 		name: null
@@ -29,14 +30,15 @@ pageModel.queueView = {
 	
 	show: function(id) {
 		$.getJSON("/api/queue/" + id, function(data) {
-			ko.mapping.fromJS(data, {}, pageModel.queueView.queue);
+			ko.mapping.fromJS(data, {}, queueView.queue);
 			pageModel.section("queueView");
 		});
 	}
 	
 };
+pageModel.queueView = queueView;
 
-pageModel.queueCreate = {
+var queueCreate = {
 	
 	queue: ko.mapping.fromJS({
 		name: null,
@@ -55,6 +57,7 @@ pageModel.queueCreate = {
 	},
 	
 };
+pageModel.queueCreate = queueCreate;
 
 ko.applyBindings(pageModel);
 
