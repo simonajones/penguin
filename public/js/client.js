@@ -6,7 +6,7 @@ require.config({
 	paths: {
 		jquery: "//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min",
 		knockout: "//ajax.aspnetcdn.com/ajax/knockout/knockout-2.2.0",
-		knockoutmapping: "lib/knockout.mapping-latest",
+		knockoutmapping: "//cdnjs.cloudflare.com/ajax/libs/knockout.mapping/2.3.4/knockout.mapping",
 		director: "lib/director.min",
 		bootstrap: "//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min"
 	},
