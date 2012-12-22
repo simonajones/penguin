@@ -1,9 +1,9 @@
 // Penguin Server
 
-var express = require("express"),
-	queue = require("./routes/queue"),
-	http = require("http"),
-	path = require("path");
+var express = require("express");
+var queue = require("./routes/queue");
+var http = require("http");
+var path = require("path");
 
 var app = express();
 
