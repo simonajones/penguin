@@ -11,11 +11,7 @@ var createQueue = function(name)
 	};
 };
 
-var queues =
-[
-	createQueue("Logistics"),
-	createQueue("Pricing Management")
-];
+var queues = [];
 
 exports.list = function(request, response)
 {
