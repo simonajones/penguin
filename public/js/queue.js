@@ -5,7 +5,7 @@
 // ------------------------------------------------------------------------
 
 var pageModel = ko.mapping.fromJS({
-	section: "queuesView"
+	section: null
 });
 
 var queuesView = {
