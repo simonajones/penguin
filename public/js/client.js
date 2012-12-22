@@ -18,4 +18,4 @@ require.config({
 
 });
 
-require(["binder", "router", "bootstrap"]);
+require(["bootstrap", "binder", "router"]);
