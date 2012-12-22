@@ -1,5 +1,6 @@
-// Queue Resource
-
+/*
+ * Queue resource.
+ */
 var identifier = 1;
 
 var createQueue = function(name)
