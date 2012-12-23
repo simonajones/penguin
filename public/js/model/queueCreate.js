@@ -19,6 +19,11 @@ define(["knockout", "knockout-mapping", "model/page", "jquery-json"], function(k
 		
 		reset: function() {
 			mapping.fromJS(emptyQueue, page.queueCreate.queue);
+		},
+		
+		show: function() {
+			page.queueCreate.reset();
+			page.show("queueCreate");
 		}
 		
 	};

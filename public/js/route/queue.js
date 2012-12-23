@@ -3,19 +3,10 @@
  */
 define(["router", "model/page", "model/queueCreate", "model/queuesView", "model/queueView"], function(router, page) {
 
-	router.on("/queues", function() {
-		page.queuesView.load();
-		page.show("queuesView");
-	});
+	router.on("/queues", page.queuesView.show);
 	
-	router.on("/queue/new", function() {
-		page.queueCreate.reset();
-		page.show("queueCreate");
-	});
+	router.on("/queue/new", page.queueCreate.show);
 	
-	router.on("/queue/:id", function(id) {
-		page.queueView.load(id);
-		page.show("queueView");
-	});
+	router.on("/queue/:id", page.queueView.show);
 	
 });
