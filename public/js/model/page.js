@@ -17,6 +17,8 @@ define(["knockout"], function(ko) {
 		
 	};
 	
+	ko.applyBindings(model);
+	
 	return model;
 	
 });
