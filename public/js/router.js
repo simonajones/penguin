@@ -5,11 +5,20 @@ define(["model/app", "director"], function(app) {
 
 	return Router({
 		
-		"/queues": app.queuesView.show,
+		"/queues": function() {
+			app.queuesView.load();
+			app.show("queuesView");
+		},
 		
-		"/queue/new": app.queueCreate.show,
+		"/queue/new": function() {
+			app.queueCreate.reset();
+			app.show("queueCreate");
+		},
 		
-		"/queue/:id": app.queueView.show
+		"/queue/:id": function(id) {
+			app.queueView.load(id);
+			app.show("queueView");
+		}
 		
 	}).init("/queues");
 	
