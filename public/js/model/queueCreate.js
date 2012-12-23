@@ -11,11 +11,6 @@ define(["knockout", "knockout-mapping", "model/page", "jquery-json"], function(k
 		
 		queue: mapping.fromJS(emptyQueue),
 		
-		show: function() {
-			page.queueCreate.reset();
-			page.show("queueCreate");
-		},
-		
 		save: function() {
 			$.postJSON("/api/queues", ko.toJSON(this.queue), function(data) {
 				window.location.hash = "/queue/" + data.id;
@@ -24,6 +19,11 @@ define(["knockout", "knockout-mapping", "model/page", "jquery-json"], function(k
 		
 		reset: function() {
 			mapping.fromJS(emptyQueue, page.queueCreate.queue);
+		},
+		
+		show: function() {
+			page.queueCreate.reset();
+			page.show("queueCreate");
 		}
 		
 	};
