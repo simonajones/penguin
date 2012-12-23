@@ -1,8 +1,8 @@
 /*
- * Binds the HTML Knockout bindings to the application view model.
+ * Binds the HTML Knockout bindings to the page view model.
  */
-define(["knockout", "model/app"], function(ko, app) {
+define(["knockout", "model/page"], function(ko, model) {
 	
-	ko.applyBindings(app);
+	ko.applyBindings(model);
 	
 });
