@@ -6,7 +6,7 @@ define(["knockout"], function(ko) {
 	var model = {
 		
 		/*
-		 * The template page of the currently visible page.
+		 * The template name of the currently visible page.
 		 */
 		show: ko.observable(),
 		
