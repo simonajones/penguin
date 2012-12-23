@@ -1,23 +1,23 @@
 /*
  * Configures Director to route hash locations to their corresponding view model functions.
  */
-define(["model/app", "director"], function(app) {
+define(["model/page", "model/queueCreate", "model/queuesView", "model/queueView", "director"], function(page) {
 
 	return Router({
 		
 		"/queues": function() {
-			app.queuesView.load();
-			app.show("queuesView");
+			page.queuesView.load();
+			page.show("queuesView");
 		},
 		
 		"/queue/new": function() {
-			app.queueCreate.reset();
-			app.show("queueCreate");
+			page.queueCreate.reset();
+			page.show("queueCreate");
 		},
 		
 		"/queue/:id": function(id) {
-			app.queueView.load(id);
-			app.show("queueView");
+			page.queueView.load(id);
+			page.show("queueView");
 		}
 		
 	}).init("/queues");
