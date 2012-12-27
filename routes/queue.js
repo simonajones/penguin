@@ -27,12 +27,10 @@ exports.create = function(request, response)
 	response.send(201, {id: queue.id});
 };
 
-var identifier = 1;
-
 var createQueue = function(name)
 {
 	return {
-		id: identifier++,
+		id: queues.length + 1,
 		name: name
 	};
 };
@@ -44,18 +42,20 @@ var save = function()
 {
 	console.log("Saved " + queues.length + " queues\n:" + JSON.stringify(queues));
 	fs.writeFile(".saved-queues.json", JSON.stringify(queues), function (err) {
-		  if (err) throw err;
-		  console.log('It\'s saved!');
-		});
+		if (err) throw err;
+		console.log('It\'s saved!');
+	});
 }
 
 exports.load = function()
 {
 	fs.readFile(".saved-queues.json", function (err, data) {
-		  //if (err) throw err;
-		  console.log(JSON.parse(data));
-		  queues = JSON.parse(data);
-          console.log("Loaded " + queues.length + " queues");
-		});
+		if (err) { } 
+		else {
+			console.log(JSON.parse(data));
+			queues = JSON.parse(data);
+			console.log("Loaded " + queues.length + " queues");
+		}
+	});
 	
 }
