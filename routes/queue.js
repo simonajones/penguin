@@ -36,6 +36,14 @@ var createQueue = function(name)
 	};
 };
 
+exports.addStory = function(queueId, description)
+{
+	var queue = queues[queueId - 1];
+
+	queue.stories.push({"description":description});
+	save();
+};
+
 /* 
  * Save and load operations
  */
